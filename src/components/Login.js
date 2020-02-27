@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Helmet} from 'react-helmet'
 import {withRouter} from 'react-router-dom'
 
 const initState = {
@@ -58,6 +59,10 @@ class Login extends Component{
 
 	render(){
 		return (
+			<>
+			<Helmet>
+				<title>Login!!</title>
+			</Helmet>
 			<div className= "full-centered">
 				<div className = "jumbotron">
 					<h1 className="display-3">Inicio de sesión</h1>
@@ -91,6 +96,7 @@ class Login extends Component{
 					}
 				</div>
 			</div>
+			</>
 		);
 	}
 }

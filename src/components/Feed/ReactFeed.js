@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Post from './Post'
+import {Helmet} from 'react-helmet'
 
 class ReactFeed extends Component {
   constructor(props){
@@ -69,7 +70,11 @@ class ReactFeed extends Component {
     });
   
     return (
+      
       <div className = "container">
+      <Helmet>
+       <title> React Feed</title>
+      </Helmet>
         <h1 className="display-3">ReactFeed</h1>
         <h2>Recent posts</h2>
   
