@@ -4,7 +4,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 const CreateForm = (props) => {
   const { title, text, image, submitHandler, changeHandler } = props;
   return (
-    <Form inline>
+    <Form inline >
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <Label for="text" className="mr-sm-2">Titulo</Label>
         <Input type="text" name="title" id="title" placeholder="" value={title} onChange={changeHandler}/>

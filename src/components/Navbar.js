@@ -18,13 +18,13 @@ const Example = (props) => {
 
   return (
     <div>
-      <Navbar color="black" light expand="md">
+      <Navbar color="success" dark expand="md" >
         <NavbarBrand href="/">Red Social Cool</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
           <NavItem>
-            <NavLink onClick={props.clickHome}>Home</NavLink>
+            <NavLink onClick={props.clickHome} >Home</NavLink>
             </NavItem>
             <NavItem>
               <NavLink onClick={props.clickPerfil}>Mi perfil</NavLink>

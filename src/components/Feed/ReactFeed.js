@@ -5,6 +5,8 @@ import Navbar from '../Navbar'
 import CreatePost from './CreatePost'
 import axios from "axios";
 import Alert from './Alert'
+import Spinnner from './../Spinner'
+import { UncontrolledCarousel } from 'reactstrap';
 
 class ReactFeed extends Component {
   constructor(props) {
@@ -198,12 +200,24 @@ class ReactFeed extends Component {
         {modoEdicion && <Alert msg='ADVERTENCIA, entrando a modo edicion' color='warning'/>}
 
         <Navbar clickHome={()=>this.setState({miPerfil:false})} clickPerfil={()=>this.setState({miPerfil:true})} clickCerrarSesion={() => this.cerrarSesion()} />
-    <h2>¿Que estas pensando {this.state.username}?</h2>
+        <h2>¿Que estas pensando {this.state.username}?</h2>
         <CreatePost title={title} text={text} image={image} submitHandler={this.createPost} changeHandler={this.changeHandler} />
+        <div  style={{textAlign:'center'}}>
         <h1 className="display-3">{msg}</h1>
+        
+        <Spinnner/>
+        </div>
         <h2>Recent posts</h2>
-        <div className="posts">
-          {postsComponents}
+        <div className="posts" style={{color:'red'}}>
+          <UncontrolledCarousel items={this.state.posts.map((element,index)=>{
+            return {
+              header:element.user,
+              caption:element.text,
+              key:index,
+              src:element.image
+            }
+          })} />;
+          {/*postsComponents*/}
         </div>
       </div>
     );
