@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { ButtonToggle } from "reactstrap";
+import '../../App.css'
 
 const Post = props => {
     return(
@@ -10,8 +11,11 @@ const Post = props => {
 				<h3>
 					{props.title}
 				</h3>
-				<h5>Usuario: {props.name}</h5>
-				<ButtonToggle style={{float:'right'}} color="danger" onClick={props.deletePost}>Eliminar Post</ButtonToggle>
+				<div className='divaso'>
+					<h5>Usuario: {props.name}</h5>
+					<ButtonToggle className='float-right' color="warning" onClick={props.editarPost}>Editar Post</ButtonToggle>
+					<ButtonToggle className='float-right' color="danger" onClick={props.deletePost}>Eliminar Post</ButtonToggle>
+				</div>
 			</header>
             
 			<main className="card-body">

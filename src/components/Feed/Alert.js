@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Alert } from 'reactstrap';
+import '../../App.css'
+//import {StickyContainer, Sticky} from 'react-sticky'
 
 const AlertExample = (props) => {
   const [visible, setVisible] = useState(true);
@@ -7,8 +9,8 @@ const AlertExample = (props) => {
   const onDismiss = () => setVisible(false);
 
   return (
-    <Alert color="success" isOpen={visible} toggle={onDismiss}>
-      Su accion se realizó con exito :D. (Soy una etiqueta verde btw)
+    <Alert className='sticky' color={props.color} isOpen={visible} toggle={onDismiss}>
+        {props.msg}
     </Alert>
   );
 }

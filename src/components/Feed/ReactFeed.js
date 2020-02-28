@@ -18,7 +18,8 @@ class ReactFeed extends Component {
       token: localStorage.getItem('token'),
       mostrarFlag: false,
       miPerfil:false,
-      misPosts:[]
+      misPosts:[],
+      modoEdicion: false
     }
   }
 
@@ -130,6 +131,30 @@ class ReactFeed extends Component {
         console.log(err)
       })
   }
+  editarPost = (id) =>{
+    const config = {
+      headers: {
+        'Authorization': 'Bearer ' + this.state.token
+      }
+    }
+    const body ={
+      _id:id,
+      title: this.state.title,
+      text: this.state.text,
+      image: this.state.image
+    }
+    this.setState({modoEdicion:true})
+    axios.put('https://reactcourseapi.herokuapp.com/post/', body, config)
+      .then(response => {
+        this.setState({modoEdicion:false})
+        this.fetchData()
+        this.getUserPosts()
+        
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+  }
 
   postMiPerfilOTodos = (arr) =>{
     return arr.map((post) => {
@@ -142,6 +167,7 @@ class ReactFeed extends Component {
         text={post.text}
         image={post.image}
         onClick={() => this.likeHandler(post._id)}
+        editarPost={()=>this.editarPost(post._id)}
         deletePost={() => this.deletePost(post._id)}
       />);
 
@@ -150,7 +176,7 @@ class ReactFeed extends Component {
 
   render() {
 
-    const { title, text, image,  mostrarFlag, miPerfil} = this.state;
+    const { title, text, image,  mostrarFlag, miPerfil, modoEdicion} = this.state;
     let postsComponents=[]
     let msg=''
     if(miPerfil){
@@ -168,7 +194,9 @@ class ReactFeed extends Component {
         <Helmet>
           <title> React Feed</title>
         </Helmet>
-        {mostrarFlag && <Alert/>}
+        {mostrarFlag && <Alert msg='Su accion se realizó con exito :D. (Soy una etiqueta verde btw)' color='success'/>}
+        {modoEdicion && <Alert msg='ADVERTENCIA, entrando a modo edicion' color='warning'/>}
+
         <Navbar clickHome={()=>this.setState({miPerfil:false})} clickPerfil={()=>this.setState({miPerfil:true})} clickCerrarSesion={() => this.cerrarSesion()} />
     <h2>¿Que estas pensando {this.state.username}?</h2>
         <CreatePost title={title} text={text} image={image} submitHandler={this.createPost} changeHandler={this.changeHandler} />
