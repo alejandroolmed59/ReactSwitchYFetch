@@ -40,7 +40,7 @@ class Splash extends React.Component{
         const splash= (<div className="full-centered">
                             <h1>Carganding....</h1>
                         </div>);
-        console.log(this.state.loading)
+        //console.log(this.state.loading)
         return this.state.loading? splash : this.props.children;
         
     }

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { ButtonToggle } from "reactstrap";
 
 const Post = props => {
     return(
@@ -10,6 +11,7 @@ const Post = props => {
 					{props.title}
 				</h3>
 				<h5>Usuario: {props.name}</h5>
+				<ButtonToggle style={{float:'right'}} color="danger" onClick={props.deletePost}>Eliminar Post</ButtonToggle>
 			</header>
             
 			<main className="card-body">

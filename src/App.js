@@ -9,18 +9,23 @@ import Login from './components/Login'
 import ReactFeed from './components/Feed/ReactFeed'
 import Splash from './Splash'
 
+import Example from './components/Example'
+
 function App() {
   
   return (
-    <Switch>
-      <Route path='/register' component={Register}/>
-      <Route path='/login' component={Login}/>
-      <Route path='/'>
-        <Splash>
-          <ReactFeed/>
-        </Splash>
-      </Route>
-    </Switch>
+    <>
+      <Switch>
+        <Route path='/Example' component={Example}/>
+        <Route path='/register' component={Register}/>
+        <Route path='/login' component={Login}/>
+        <Route path='/'>
+          <Splash>
+            <ReactFeed/>
+          </Splash>
+        </Route>
+      </Switch>
+    </>
   );
 }
 
